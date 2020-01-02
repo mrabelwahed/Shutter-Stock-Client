@@ -1,0 +1,112 @@
+ext.deps = [:]
+def versions = [:]
+
+versions.appcompat = "1.1.0"
+versions.constraint_layout = "2.0.0-beta4"
+versions.junit = "4.12"
+versions.androidx_test = "1.2.0"
+versions.espresso = "3.2.0"
+versions.recyclerview = "1.0.0"
+versions.paging = "2.1.0"
+versions.lifecycle_extensions = "2.1.0"
+versions.mockito = "3.1.0"
+versions.dagger = "2.25.3"
+versions.picasso = "2.71828"
+versions.ok_http = "3.4.1"
+versions.retrofit = "2.6.1"
+versions.rx_android = '2.1.1'
+versions.test_fragment_version = "1.2.0-rc01"
+versions.rx_call_adapter_version = '2.6.1'
+versions.reactivestreams_version = "1.1.1"
+versions.mock_web_server_version = "4.2.2"
+versions.arch_core_testing = "2.1.0"
+
+ext.versions = versions
+
+def mock_web_server= [:]
+mock_web_server.server = "com.squareup.okhttp3:mockwebserver:$versions.mock_web_server_version"
+deps.mock_web_server = mock_web_server
+
+
+
+def reactivestreams = [:]
+reactivestreams.reactivestreams = "android.arch.lifecycle:reactivestreams:$versions.reactivestreams_version"
+deps.reactivestreams = reactivestreams
+
+
+def rx_call_adapter = [:]
+rx_call_adapter.rx_adapter = "com.squareup.retrofit2:adapter-rxjava2:$versions.rx_call_adapter_version"
+deps.rx_call_adapter = rx_call_adapter
+
+def test_fragments  = [:]
+test_fragments.fragments_test_debug =  "androidx.fragment:fragment-testing:$versions.test_fragment_version"
+test_fragments.fragments_test = "androidx.fragment:fragment:$versions.test_fragment_version"
+deps.test_fragments = test_fragments
+
+def support = [:]
+support.app_compat = "androidx.appcompat:appcompat:$versions.appcompat"
+support.recyclerview = "androidx.recyclerview:recyclerview:$versions.recyclerview"
+support.cardview = "androidx.cardview:cardview:$versions.cardview"
+deps.support = support
+
+def lifecycle = [:]
+lifecycle.lifecycle_extensions = "androidx.lifecycle:lifecycle-extensions:$versions.lifecycle_extensions"
+deps.lifecycle = lifecycle
+
+def espresso = [:]
+espresso.core = "androidx.test.espresso:espresso-core:$versions.espresso"
+espresso.idle = "androidx.test.espresso:espresso-idling-resource:$versions.espresso"
+deps.espresso = espresso
+
+def testing = [:]
+testing.runner = "androidx.test:runner:$versions.androidx_test"
+testing.core = "androidx.test:core:$versions.androidx_test"
+testing.rules = "androidx.test:rules:$versions.androidx_test"
+testing.arch_testing = "androidx.arch.core:core-testing:$versions.arch_core_testing"
+deps.testing = testing
+
+def mockito = [:]
+mockito.core = "org.mockito:mockito-core:$versions.mockito"
+deps.mockito = mockito
+
+deps.paging = "androidx.paging:paging-runtime-ktx:$versions.paging"
+deps.junit = "junit:junit:$versions.junit"
+deps.constraint_layout = "androidx.constraintlayout:constraintlayout:$versions.constraint_layout"
+deps.uiautomator = "androidx.test.uiautomator:uiautomator:$versions.uiautomator"
+ext.deps = deps
+
+def dagger = [:]
+// dagger
+dagger.runtime = "com.google.dagger:dagger:$versions.dagger"
+dagger.compiler = "com.google.dagger:dagger-compiler:$versions.dagger"
+
+deps.dagger = dagger
+
+def picasso = [:]
+picasso.picasso =  "com.squareup.picasso:picasso:$versions.picasso"
+deps.picasso = picasso
+
+
+def build_versions = [:]
+build_versions.min_sdk = 22
+build_versions.target_sdk = 29
+build_versions.build_tools = "29.0.2"
+ext.build_versions = build_versions
+
+
+def ok_http = [:]
+ok_http.okhttp = "com.squareup.okhttp3:okhttp:$versions.ok_http"
+ok_http.interceptor = "com.squareup.okhttp3:logging-interceptor:$versions.ok_http"
+deps.ok_http = ok_http
+
+// Retrofit
+def retrofit = [:]
+retrofit.retrofit = "com.squareup.retrofit2:retrofit:$versions.retrofit"
+retrofit.gson_converter =  "com.squareup.retrofit2:converter-gson:$versions.retrofit"
+deps.retrofit = retrofit
+
+// RxAndroid
+def rx_android = [:]
+rx_android.rx_android = "io.reactivex.rxjava2:rxandroid:$versions.rx_android"
+deps.rx_android = rx_android
+

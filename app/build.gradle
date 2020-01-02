@@ -1,0 +1,117 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
+android {
+    compileSdkVersion build_versions.target_sdk
+    buildToolsVersion build_versions.build_tools
+
+    defaultConfig {
+        applicationId "com.garhy.shutterstock"
+        minSdkVersion build_versions.min_sdk
+        targetSdkVersion build_versions.target_sdk
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    testOptions {
+        unitTests.returnDefaultValues = true
+        reportDir "$rootDir/test-reports"
+        resultsDir "$rootDir/test-results"
+
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test:runner:1.2.0'
+
+
+    // Espresso
+    def androidx_test_espresso = "3.2.0"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$androidx_test_espresso"
+    androidTestImplementation "androidx.test.espresso:espresso-contrib:$androidx_test_espresso"
+    implementation "androidx.test.espresso:espresso-idling-resource:$androidx_test_espresso"
+
+
+    // Mockito
+    def mockito_core = "2.25.0"
+    implementation "org.mockito:mockito-core:$mockito_core"
+    def mockito_android = "2.25.0"
+    androidTestImplementation "org.mockito:mockito-android:$mockito_android"
+
+    // androidx.test
+    def androidx_test = "1.1.0"
+    androidTestImplementation "androidx.test:runner:$androidx_test"
+    androidTestImplementation "androidx.test:core:$androidx_test"
+    androidTestImplementation "androidx.test.ext:junit-ktx:$androidx_test"
+
+
+    implementation deps.support.app_compat
+    implementation deps.support.recyclerview
+    implementation deps.paging
+    implementation deps.constraint_layout
+
+
+    // picasso
+    implementation deps.picasso.picasso
+
+
+    // ok http
+    implementation deps.ok_http.okhttp
+    implementation deps.ok_http.interceptor
+
+    // retrofit
+    implementation deps.retrofit.retrofit
+    implementation deps.retrofit.gson_converter
+
+    // dagger
+    implementation deps.dagger.runtime
+    kapt deps.dagger.compiler
+
+    // Rx-Retrofit Call Adapter
+    implementation deps.rx_call_adapter.rx_adapter
+    // Retrofit call adapter
+
+    // Reactive Streams (convert Observable to LiveData)
+    implementation deps.reactivestreams.reactivestreams
+
+// ViewModel and LiveData
+    implementation deps.lifecycle.lifecycle_extensions
+
+    def fragment_version = "1.2.0-rc04"
+    // Kotlin
+    implementation "androidx.fragment:fragment-ktx:$fragment_version"
+    implementation "androidx.fragment:fragment:1.1"
+    // rx android
+    implementation deps.rx_android.rx_android
+
+    // mock web server
+    testImplementation deps.mock_web_server.server
+
+    // for testing live data
+    testImplementation deps.testing.arch_testing
+
+    debugImplementation deps.testing.core
+
+
+    // androidx.fragment
+    debugImplementation deps.test_fragments.fragments_test_debug
+    implementation deps.test_fragments.fragments_test
+}
